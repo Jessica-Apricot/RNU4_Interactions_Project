@@ -11,18 +11,21 @@ SNP which was associated with ReNU.
 
 
 Unprocessed Data files need for code.
+Place all files in a folder titled Large_files
 
 LIGR-seq :  Global Mapping of Human RNA-RNA Interactions
   Uses AMT to crosslink RNA in HEK293T cell line
   
   https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE80167
   
-  Download samples: GSM2113739 LIGR-Seq_AMT_Ligase_Rep1
+  Download samples: GSM2113739 LIGR-Seq_AMT_Ligase_Rep1 
                     GSM2113743 LIGR-Seq_AMT_Ligase_Rep2
                     
 RNAinter : http://www.rnainter.org/download/
 
   Download: All RNA-RNA interactions
+  
+  Rename file to: RNAInter_full_Interactions_data
   
 NPinter : http://bigdata.ibp.ac.cn/npinter5/download/
 
