@@ -10,7 +10,7 @@ shares the highly conserved 18bp region but does not share the same reccurant
 SNP which was associated with ReNU.
 
 
-Files needed 
+Unprocessed Data files need for code.
 
 LIGR-seq :  Global Mapping of Human RNA-RNA Interactions
   Uses AMT to crosslink RNA in HEK293T cell line
