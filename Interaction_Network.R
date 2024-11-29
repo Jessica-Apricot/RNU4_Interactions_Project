@@ -8,6 +8,7 @@ library(tidyr)
 install.packages("igraph")
 library(igraph)
 
+
 #Interactions that are RNU4-1 Exclusive                                                                       
 NW_LRep1_In_RNU41_only <- anti_join(LRep1_Filtered_RNU41, LRep1_Filtered_RNU42, by='Part2')
 
@@ -99,10 +100,22 @@ Shared_RNU4<- rbind(NW_LRep1_Filtered_RNU41, NW_LRep1_Filtered_RNU42, NW_LRep2_F
 ##Select for duplicates in combined
 Shared_RNU4 <- Shared_RNU4[duplicated(Shared_RNU4) | duplicated(Shared_RNU4, fromLast = TRUE), ]
 
+#combine the RNU4-1 and -2 and shared
+All_RNU4 <- rbind(All_RNU41_exclusive, All_RNU42_exclusive, Shared_RNU4)
+
 
 
 #Test
-g <- graph_from_data_frame(All_RNU42_exclusive, directed = FALSE)
+g <- graph_from_data_frame(All_RNU4, directed = FALSE)
 
-plot(g, vertex.size = 30, vertex.label.cex = 1.5, edge.arrow.size = 0.5)
+V(g)$color <- ifelse(V(g)$name == "RNU4-1", "red",
+                     ifelse(V(g)$name == "RNU4-2", "green","lightgray"))
+
+V(g)$size <- ifelse(V(g)$name == "RNU4-1", 30,
+                    ifelse(V(g)$name == "RNU4-2", 30, 20))
+
+
+plot(g, layout = layout_with_fr(g), vertex.label = V(g)$name, vertex.label.cex = 0.8,
+     vertex.size = V(g)$size, vertex.color = V(g)$color,
+     edge.arrow.size = 0.5)
 
