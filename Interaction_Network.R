@@ -103,9 +103,13 @@ Shared_RNU4 <- Shared_RNU4[duplicated(Shared_RNU4) | duplicated(Shared_RNU4, fro
 #combine the RNU4-1 and -2 and shared
 All_RNU4 <- rbind(All_RNU41_exclusive, All_RNU42_exclusive, Shared_RNU4)
 
+All_RNU4 <-All_RNU4[!grepl("U4",All_RNU4$Part2),]
+All_RNU4 <-All_RNU4[!grepl("U6",All_RNU4$Part2),]
+#Removing RN7SL pseudeogenes
+Pseudogenes <- c("575P", "5P", "521P", "660P", "735P", "444P")
+All_RNU4 <- All_RNU4[!grepl(paste(Pseudogenes, collapse = "|") ,All_RNU4$Part2),]
 
-
-#Test
+#Interaction network graph
 g <- graph_from_data_frame(All_RNU4, directed = FALSE)
 
 V(g)$color <- ifelse(V(g)$name == "RNU4-1", "red",
@@ -115,7 +119,9 @@ V(g)$size <- ifelse(V(g)$name == "RNU4-1", 30,
                     ifelse(V(g)$name == "RNU4-2", 30, 20))
 
 
+
 plot(g, layout = layout_with_fr(g), vertex.label = V(g)$name, vertex.label.cex = 0.8,
      vertex.size = V(g)$size, vertex.color = V(g)$color,
      edge.arrow.size = 0.5)
 
+tkplot(g)
