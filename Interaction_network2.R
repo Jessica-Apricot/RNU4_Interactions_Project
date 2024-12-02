@@ -52,7 +52,7 @@ All_RNU4 <- rbind(All_RNU41_interactions, All_RNU42_interactions)
 All_RNU4 <-All_RNU4[!grepl("U4",All_RNU4$Part2),]
 All_RNU4 <-All_RNU4[!grepl("U6",All_RNU4$Part2),]
 #Removing RN7SL pseudeogenes
-Pseudogenes <- c("575P", "5P", "521P", "660P", "735P", "444P")
+Pseudogenes <- c("575P", "5P", "521P", "660P", "735P", "444http://127.0.0.1:27109/graphics/b4b2ea16-c051-47f2-b385-f7eb74550927.pngP")
 All_RNU4 <- All_RNU4[!grepl(paste(Pseudogenes, collapse = "|") ,All_RNU4$Part2),]
 
 
@@ -76,9 +76,15 @@ tkplot(g)
 #Venn Diagram
 
 venn.plot <- venn.diagram(
-  x= list(RNU41 = All_RNU41_interactions, RNU42 = All_RNU42_interactions),
+  x= list(RNU41 = All_RNU41_interactions$Part2, RNU42 = All_RNU42_interactions$Part2),
   filename= NULL,
-  output = TRUE
+  fontfamily = "Georgia",
+  fontface = "bold",
+  cat.cex = 1.5,
+  cex.number = 3,
+  cat.dist = 0.03,
+  fill = c("red", "green"),
+  alpha = 0.5,
 )
 
 grid.draw(venn.plot)
