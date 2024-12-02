@@ -8,7 +8,7 @@ library(tidyr)
 LIGR_seq_Rep1_file_path <- "large_data/GSM2113739_S1_AMT_Ligase_Rep1_v19-48.rmsk.uniq.unfilt.lig.txt"
 
 # Read the tab-delimited file
-LIGR_seq_Rep1 <- read.delim(LIGR_seq_file_path)
+LIGR_seq_Rep1 <- read.delim(LIGR_seq_Rep1_file_path)
 
 #Set column names
 colnames(LIGR_seq_Rep1) <- c("Interaction_status", 
@@ -206,10 +206,10 @@ NPinter_RNU41 <- NPinter_RNU41 %>%
     Molecule1 = ifelse(Molecule1 != "RNU4-1", "RNU4-1", Molecule1)
   )
 
-#Whats exlusive to RNU4-2?
+#Whats exclusive to RNU4-2?
 NPinter_RNU42_only <- anti_join(NPinter_RNU42, NPinter_RNU41, by='Molecule2') 
 
-rm(RNAInter, NPinter)
+rm(RNAInter, NPinter, LIGR_seq_Rep1, LIGR_seq_Rep2)
 
 
 
