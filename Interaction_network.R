@@ -56,6 +56,47 @@ Pseudogenes <- c("575P", "5P", "521P", "660P", "735P", "444http://127.0.0.1:2710
 All_RNU4 <- All_RNU4[!grepl(paste(Pseudogenes, collapse = "|") ,All_RNU4$Part2),]
 
 
+
+#All exclusive RNU4-1 interactions
+
+RNAInter_RNU41_only <- anti_join(RNAInter_RNU41, RNAInter_RNU42, by='Part2') 
+Npinter_RNU41_only <- anti_join(NPinter_RNU41, NPinter_RNU42, by='Part2') 
+LRep1_RNU41_only <- anti_join(LRep1_Filtered_RNU41, LRep1_Filtered_RNU42, by='Part2') 
+LRep2_RNU41_only <- anti_join(LRep2_Filtered_RNU41, LRep2_Filtered_RNU42, by='Part2')
+
+All_exclusive_RNU41 <- rbind(RNAInter_RNU41_only, Npinter_RNU41_only, LRep1_RNU41_only, LRep2_RNU41_only)
+
+#Removing U4 values
+All_exclusive_RNU41 <-All_exclusice_RNU41[!grepl("U4",All_exclusive_RNU41$Part2),]
+All_exclusive_RNU41 <-All_exclusice_RNU41[!grepl("U6",All_exclusive_RNU41$Part2),]
+
+#Remove duplicates
+All_exclusive_RNU41 <- All_exclusive_RNU41 %>% distinct(Part2, .keep_all = TRUE)
+
+
+
+
+#All RNU4-2 exclusive
+LRep1_In_RNU42_only <- LRep1_In_RNU42_only[, c("Part1", "Part2")]
+
+LRep2_In_RNU42_only <- LRep2_In_RNU42_only[, c("Part1", "Part2")]
+
+RNAInter_RNU42_only <- RNAInter_RNU42_only[,c("Part1", "Part2")]
+colnames(RNAInter_RNU42_only) <- c("Part1", "Part2")
+
+NPinter_RNU42_only <- NPinter_RNU42_only[, c("Part1", "Part2")]
+colnames(NPinter_RNU42_only) <- c("Part1", "Part2")
+
+
+All_exclusive_RNU42 <- rbind(LRep1_In_RNU42_only, LRep2_In_RNU42_only, NPinter_RNU42_only, RNAInter_RNU42_only)
+
+#Removing U4 values
+All_exclusive_RNU42 <-All_exclusive_RNU42[!grepl("U4",All_exclusive_RNU42$Part2),]
+All_exclusive_RNU42 <-All_exclusive_RNU42[!grepl("U6",All_exclusive_RNU42$Part2),]
+
+#Remove duplicates
+All_exclusive_RNU42 <- All_exclusive_RNU42 %>% distinct(Part2, .keep_all = TRUE)
+
 #Interaction network graph
 g <- graph_from_data_frame(All_RNU4, directed = FALSE)
 

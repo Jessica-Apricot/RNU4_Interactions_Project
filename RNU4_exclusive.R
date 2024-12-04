@@ -209,6 +209,8 @@ NPinter_RNU41 <- NPinter_RNU41 %>%
 #Whats exclusive to RNU4-2?
 NPinter_RNU42_only <- anti_join(NPinter_RNU42, NPinter_RNU41, by='Molecule2') 
 
+
+
 rm(RNAInter, NPinter, LIGR_seq_Rep1, LIGR_seq_Rep2)
 
 
