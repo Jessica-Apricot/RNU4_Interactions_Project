@@ -50,10 +50,7 @@ All_RNU4 <- rbind(All_RNU41_interactions, All_RNU42_interactions)
 
 #removing redundant values
 All_RNU4 <-All_RNU4[!grepl("U4",All_RNU4$Part2),]
-All_RNU4 <-All_RNU4[!grepl("U6",All_RNU4$Part2),]
-#Removing RN7SL pseudeogenes
-Pseudogenes <- c("575P", "5P", "521P", "660P", "735P", "444http://127.0.0.1:27109/graphics/b4b2ea16-c051-47f2-b385-f7eb74550927.pngP")
-All_RNU4 <- All_RNU4[!grepl(paste(Pseudogenes, collapse = "|") ,All_RNU4$Part2),]
+
 
 
 
@@ -67,8 +64,7 @@ LRep2_RNU41_only <- anti_join(LRep2_Filtered_RNU41, LRep2_Filtered_RNU42, by='Pa
 All_exclusive_RNU41 <- rbind(RNAInter_RNU41_only, Npinter_RNU41_only, LRep1_RNU41_only, LRep2_RNU41_only)
 
 #Removing U4 values
-All_exclusive_RNU41 <-All_exclusice_RNU41[!grepl("U4",All_exclusive_RNU41$Part2),]
-All_exclusive_RNU41 <-All_exclusice_RNU41[!grepl("U6",All_exclusive_RNU41$Part2),]
+All_exclusive_RNU41 <-All_exclusive_RNU41[!grepl("U4",All_exclusive_RNU41$Part2),]
 
 #Remove duplicates
 All_exclusive_RNU41 <- All_exclusive_RNU41 %>% distinct(Part2, .keep_all = TRUE)
@@ -81,10 +77,10 @@ LRep1_In_RNU42_only <- LRep1_In_RNU42_only[, c("Part1", "Part2")]
 
 LRep2_In_RNU42_only <- LRep2_In_RNU42_only[, c("Part1", "Part2")]
 
-RNAInter_RNU42_only <- RNAInter_RNU42_only[,c("Part1", "Part2")]
+RNAInter_RNU42_only <- RNAInter_RNU42_only[,c("Interactor1.Symbol", "Interactor2.Symbol")]
 colnames(RNAInter_RNU42_only) <- c("Part1", "Part2")
 
-NPinter_RNU42_only <- NPinter_RNU42_only[, c("Part1", "Part2")]
+NPinter_RNU42_only <- NPinter_RNU42_only[, c("Molecule1", "Molecule2")]
 colnames(NPinter_RNU42_only) <- c("Part1", "Part2")
 
 
@@ -92,10 +88,11 @@ All_exclusive_RNU42 <- rbind(LRep1_In_RNU42_only, LRep2_In_RNU42_only, NPinter_R
 
 #Removing U4 values
 All_exclusive_RNU42 <-All_exclusive_RNU42[!grepl("U4",All_exclusive_RNU42$Part2),]
-All_exclusive_RNU42 <-All_exclusive_RNU42[!grepl("U6",All_exclusive_RNU42$Part2),]
 
 #Remove duplicates
 All_exclusive_RNU42 <- All_exclusive_RNU42 %>% distinct(Part2, .keep_all = TRUE)
+
+
 
 #Interaction network graph
 g <- graph_from_data_frame(All_RNU4, directed = FALSE)

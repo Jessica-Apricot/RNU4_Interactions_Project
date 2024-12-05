@@ -58,9 +58,6 @@ LRep1_Filtered_RNU42 <- LRep1_Filtered_RNU42 %>%
     Part1 = ifelse(Part1 != "RNU4-2", "RNU4-2", Part1)
   )
 
-#Remove U6 interactions
-LRep1_Filtered_RNU41 <- LRep1_Filtered_RNU41[!grepl("U6",LRep1_Filtered_RNU41$Part2),]
-LRep1_Filtered_RNU42 <- LRep1_Filtered_RNU42[!grepl("U6",LRep1_Filtered_RNU42$Part2),]
 
 #Whats exlusive to RNU4-2?
 LRep1_In_RNU42_only <- anti_join(LRep1_Filtered_RNU42, LRep1_Filtered_RNU41, by='Part2')
@@ -116,9 +113,9 @@ LRep2_Filtered_RNU42 <- LRep2_Filtered_RNU42 %>%
     Part1 = ifelse(Part1 != "RNU4-2", "RNU4-2", Part1)
   )
 
-#Remove U6 interactions
-LRep2_Filtered_RNU41 <- LRep2_Filtered_RNU41[!grepl("U6",LRep2_Filtered_RNU41$Part2),]
-LRep2_Filtered_RNU42 <- LRep2_Filtered_RNU42[!grepl("U6",LRep2_Filtered_RNU42$Part2),]
+#Remove any left over U4 interactions
+LRep2_Filtered_RNU41 <- LRep2_Filtered_RNU41[!grepl("U4",LRep2_Filtered_RNU41$Part2),]
+LRep2_Filtered_RNU42 <- LRep2_Filtered_RNU42[!grepl("U4",LRep2_Filtered_RNU42$Part2),]
 
 #Whats exclusive to RNU4-2?
 LRep2_In_RNU42_only <- anti_join(LRep2_Filtered_RNU42, LRep2_Filtered_RNU41, by='Part2') 
@@ -211,7 +208,7 @@ NPinter_RNU42_only <- anti_join(NPinter_RNU42, NPinter_RNU41, by='Molecule2')
 
 
 
-rm(RNAInter, NPinter, LIGR_seq_Rep1, LIGR_seq_Rep2)
+
 
 
 
