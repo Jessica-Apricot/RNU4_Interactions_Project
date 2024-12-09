@@ -16,7 +16,7 @@ LRep1_Filtered_RNU41 <- LRep1_Filtered_RNU41[, c("Part1", "Part2")]
 
 LRep2_Filtered_RNU41 <- LRep2_Filtered_RNU41[, c("Part1", "Part2")]
 
-RNAInter_RNU41 <- RNAInter_RNU41[,c("Interactor1.Symbol", "Interactor2.Symbol")]
+RNAInter_RNU41 <- RNAInter_RNU41[, c("Interactor1.Symbol", "Interactor2.Symbol")]
 colnames(RNAInter_RNU41) <- c("Part1", "Part2")
 
 NPinter_RNU41 <- NPinter_RNU41[, c("Molecule1", "Molecule2")]
@@ -91,7 +91,6 @@ All_exclusive_RNU42 <-All_exclusive_RNU42[!grepl("U4",All_exclusive_RNU42$Part2)
 
 #Remove duplicates
 All_exclusive_RNU42 <- All_exclusive_RNU42 %>% distinct(Part2, .keep_all = TRUE)
-
 
 
 #Interaction network graph

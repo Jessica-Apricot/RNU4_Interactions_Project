@@ -28,9 +28,12 @@ colnames(LIGR_seq_Rep1) <- c("Interaction_status",
 
 
 #Filter out only rows with RNU4
-LRep1_Filtered_RNU41 <- LIGR_seq_Rep1[grepl("RNU4-1",LIGR_seq_Rep1$Gene_Symbols),]
+# Filter only rows with exact RNU4-1 in Gene_Symbols
+LRep1_Filtered_RNU41 <- LIGR_seq_Rep1[grepl("\\bRNU4-1\\b", LIGR_seq_Rep1$Gene_Symbols),]
 
-LRep1_Filtered_RNU42 <- LIGR_seq_Rep1[grepl("RNU4-2",LIGR_seq_Rep1$Gene_Symbols),]
+# Filter only rows with exact RNU4-2 in Gene_Symbols
+LRep1_Filtered_RNU42 <- LIGR_seq_Rep1[grepl("\\bRNU4-2\\b", LIGR_seq_Rep1$Gene_Symbols),]
+
 
 
 #only RNU4 that is interacting with molecules other than self
@@ -84,9 +87,9 @@ colnames(LIGR_seq_Rep2) <- c("Interaction_status", "Chimeric_read_structure",
                              "2", "3", "4", "5", "6", "7","8")
 
 #Only RNU4-1 and -2 interactions
-LRep2_Filtered_RNU41 <- LIGR_seq_Rep2[grepl("RNU4-1",LIGR_seq_Rep2$Gene_Symbols),]
+LRep2_Filtered_RNU41 <- LIGR_seq_Rep2[grepl("\\bRNU4-1\\b",LIGR_seq_Rep2$Gene_Symbols),]
 
-LRep2_Filtered_RNU42 <- LIGR_seq_Rep2[grepl("RNU4-2",LIGR_seq_Rep2$Gene_Symbols),]
+LRep2_Filtered_RNU42 <- LIGR_seq_Rep2[grepl("\\bRNU4-2\\b",LIGR_seq_Rep2$Gene_Symbols),]
 
 #only RNU4 that is interacting with molecules other than self
 LRep2_Filtered_RNU41 <- LRep2_Filtered_RNU41[!grepl("S", LRep2_Filtered_RNU41$Interaction_status),]
@@ -134,12 +137,10 @@ RNAInter <- RNAInter[grepl("Homo sapiens",RNAInter$Species1),]
 
 #RNU4-1 in any column
 RNAInter_RNU41 <- RNAInter %>%
-  filter(apply(., 1, function(row) any(grepl("RNU4-1",row))))
-
-#RNU4-2 in any column
+  filter(apply(., 1, function(row) any(grepl("\\bRNU4-1\\b", row))))
 
 RNAInter_RNU42 <- RNAInter %>%
-  filter(apply(., 1, function(row) any(grepl("RNU4-2",row))))
+  filter(apply(., 1, function(row) any(grepl("\\bRNU4-2\\b", row))))
 
 
 #RNU4-2 in the same row
@@ -181,13 +182,13 @@ NPinter <- NPinter[grepl("Homo sapiens",NPinter$Species),]
 
 #RNU4-1 in any column
 NPinter_RNU41 <- NPinter %>%
-  filter(apply(., 1, function(row) any(grepl("RNU4-1",row))))
+  filter(apply(., 1, function(row) any(grepl("\\bRNU4-1\\b",row))))
 
 
 #RNU4-2 in any column
 
 NPinter_RNU42 <- NPinter %>%
-  filter(apply(., 1, function(row) any(grepl("RNU4-2",row))))
+  filter(apply(., 1, function(row) any(grepl("\\bRNU4-1\\b",row))))
 
 #RNU4-2 in the same row
 NPinter_RNU42 <- NPinter_RNU42 %>%
