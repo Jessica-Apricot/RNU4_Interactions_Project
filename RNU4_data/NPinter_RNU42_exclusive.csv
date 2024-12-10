@@ -1,0 +1,4 @@
+"M1_Interaction_ID","Molecule1","Gene_identifier","RNA_catagory","Molecule2","M2_Interaction_ID","Molecule_type","Data_source","Assay_type","database_ID","Species","Cell_type","Interaction_catagory","Interaction_class","Interaction_catagory_2","Source"
+"ncRI-41008089","RNU4-2","ENSG00000238531","snoRNA","RNU4-1","ENSG00000200795","snRNA","RNA-RNA interaction from RISE database","PARIS","27180905","Homo sapiens","HEK293T","RNA-RNA interaction","binding","RNA-RNA","RISE database"
+"ncRI-41008090","RNU4-2","ENSG00000263761","mRNA","RNU4-1","ENSG00000200795","snRNA","RNA-RNA interaction from RISE database","PARIS","27180905","Homo sapiens","HEK293T","RNA-RNA interaction","binding","RNA-RNA","RISE database"
+"ncRI-41008091","RNU4-2","ENSG00000207116","snRNA","RNU4-1","ENSG00000200795","snRNA","RNA-RNA interaction from RISE database","PARIS","27180905","Homo sapiens","HEK293T","RNA-RNA interaction","binding","RNA-RNA","RISE database"

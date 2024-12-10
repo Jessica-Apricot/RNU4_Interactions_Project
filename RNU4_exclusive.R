@@ -210,6 +210,3 @@ NPinter_RNU42_only <- anti_join(NPinter_RNU42, NPinter_RNU41, by='Molecule2')
 
 
 
-
-
-
