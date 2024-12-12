@@ -11,6 +11,8 @@ library(igraph)
 install.packages("VennDiagram")
 library(VennDiagram)
 
+
+
 #Selecting for only the interaction columns and renaming them all P1 or P2
 LRep1_Filtered_RNU41 <- LRep1_Filtered_RNU41[, c("Part1", "Part2")]
 
@@ -91,6 +93,7 @@ All_exclusive_RNU42 <-All_exclusive_RNU42[!grepl("U4",All_exclusive_RNU42$Part2)
 
 #Remove duplicates
 All_exclusive_RNU42 <- All_exclusive_RNU42 %>% distinct(Part2, .keep_all = TRUE)
+
 
 
 #Interaction network graph
