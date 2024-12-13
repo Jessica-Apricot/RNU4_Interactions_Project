@@ -58,8 +58,11 @@ Counts <- Counts[-76, ]
 #Remove RNU4-1 interactions with RNU$-2 interactions
 Counts <- Counts[-106, ]
 
+
 row.names(Counts) <- NULL
 
+#Rename FAM166C to CIMIP2C
+Counts[83, 2] <- "CIMIP2C"
 
 
 # Create the RNA vector with no extra commas
@@ -87,7 +90,6 @@ RNA_vector <- c(
 
 # Add the RNA_vector as a new column to the All_RNU4 dataframe
 Counts$RNA <- RNA_vector
-
 
 
 write.csv(Counts, "/home/jessicaaucott/Desktop/Counts.csv", row.names = FALSE)
