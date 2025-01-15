@@ -281,7 +281,7 @@ Counts[83, 2] <- "CIMIP2C"
 
 
 # Create the RNA vector with no extra commas
-RNA_vector <- c(
+U4_RNA_vector <- c(
   "rRNA", "lincRNA", "mRNA", "lincRNA", "mRNA", "lincRNA", "lincRNA", "srpRNA", "srpRNA", "srpRNA", "rRNA",
   "rRNA", "rRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA",
   "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA", "snRNA",
@@ -304,6 +304,6 @@ RNA_vector <- c(
 
 
 # Add the RNA_vector as a new column to the All_RNU4 dataframe
-Counts$RNA <- RNA_vector
+Counts$RNA <- U4_RNA_vector
 
 
